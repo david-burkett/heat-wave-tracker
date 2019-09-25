@@ -5,6 +5,8 @@
 
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from datetime import datetime
 
 def df_builder():
@@ -14,8 +16,8 @@ def df_builder():
     Returns a Pandas DataFrame
     """
 
-    temp_df = pd.read_csv(path, 
-                            names=["DATE", "TMAX", "TMAX_ATTRIBUTES", "TMIN", "TMIN_ATTRIBUTES", "TOBS", "TOBS_ATTRIBUTES"],
+    temp_df = pd.read_csv('~/Dev/Python/heat-wave-tracker/Data/1893-2019_chas_tmp_data.csv', 
+                            names=["DATE", "TAVG", "TMAX", "TMIN"],
                             header=None,
                             sep=',',
                             parse_dates= True,
@@ -26,9 +28,14 @@ def df_builder():
 
 def main():
 
-    temperature_data = df_builder()
+    temp_data = df_builder()
+    #print(temp_data.TMAX.resample('Y').mean())
 
-    print(temperature_data.resample('Y').mean())
+    sns.set(style='darkgrid')
+    sns.jointplot(data=temp_data,
+                  x=temp_data.index, 
+                  y=temp_data.TMAX.resample('Y').mean())
+    plt.show()
 
 if __name__ == "__main__":
     main()
