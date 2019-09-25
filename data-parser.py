@@ -5,6 +5,8 @@
 
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from datetime import datetime
 
 def df_builder():
@@ -28,7 +30,8 @@ def main():
 
     temperature_data = df_builder()
 
-    print(temperature_data.resample('Y').mean())
+    sns.tsplot(temperature_data.TMAX.resample('Y').mean())
+    plt.show()
 
 if __name__ == "__main__":
     main()
