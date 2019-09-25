@@ -7,6 +7,6 @@ __TMAX:__ Temperature Max
 
 __TMIN:__ Temperature Minimum
 
-__TOBS:__ Temperature at Time of Observation
+__TAVG:__ Average Temperature
 
 More information can be found [here](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/GHCND_documentation.pdf)
